@@ -7,7 +7,7 @@ on:
       - production-site
 
 jobs:
-  build-and-deploy:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
