@@ -4,6 +4,7 @@ htmlTitle: First post
 title: First post
 description: The first post on the blog
 date: 2020-08-01
+tags: ['posts', 'tech']
 ---
 
 Hello, here is the body of the post.
