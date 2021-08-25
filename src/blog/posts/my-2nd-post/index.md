@@ -4,6 +4,7 @@ htmlTitle: Second post
 title: Second post
 description: The second post on the blog
 date: 2020-09-01
+tags: ['posts', 'tech']
 ---
 
 ## 2nd level heading

@@ -11,9 +11,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(eleventySyntaxHighlightPlugin);
 
   // Copy some resource to the output as-is
-  // There not needed currently
-  eleventyConfig.addPassthroughCopy('images');
-  eleventyConfig.addPassthroughCopy('admin');
+  eleventyConfig.addPassthroughCopy(`**/*.png`);
+  eleventyConfig.addPassthroughCopy(`**/*.jpg`);
+  eleventyConfig.addPassthroughCopy(`**/*.gif`);
 
   // Override Browsersync defaults (used only in local development with --serve)
   // - make 404 error pages work in local development
