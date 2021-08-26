@@ -11,9 +11,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(eleventySyntaxHighlightPlugin);
 
   // Copy some resource to the output as-is
-  eleventyConfig.addPassthroughCopy(`**/*.png`);
-  eleventyConfig.addPassthroughCopy(`**/*.jpg`);
-  eleventyConfig.addPassthroughCopy(`**/*.gif`);
+  //eleventyConfig.addPassthroughCopy(`**/*.png`);
 
   // Override Browsersync defaults (used only in local development with --serve)
   // - make 404 error pages work in local development
@@ -58,7 +56,13 @@ module.exports = function(eleventyConfig) {
       "md",
       "njk",
       "html",
-      "liquid"
+      "liquid",
+
+      // This is a hack suggested by Eleventy documentation to enable pass through copy.
+      // Note that eleventyConfig.addPassthroughCopy() interferes with webpack ATM.
+      "png",
+      "jpg",
+      "gif"
     ],
 
     // -----------------------------------------------------------------
