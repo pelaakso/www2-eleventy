@@ -12,13 +12,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Create Production update PR
-        uses: peter-evans/create-pull-request@v3
-        with:
-          commit-message: 'Production update'
-          base: 'production-site'
-          branch: 'main'
-          delete-branch: false
-          title: 'Production update'
-          body: |
-            Description here
-          draft: false
+        run: |
+          gh pr create --title 'Production update' --body 'Update production branch' --base production-site --head main
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
