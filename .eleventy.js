@@ -4,6 +4,7 @@ const eleventySyntaxHighlightPlugin = require("@11ty/eleventy-plugin-syntaxhighl
 
 
 module.exports = function(eleventyConfig) {
+  // _site is also the 11ty default
   const outputDirectory = "_site";
 
   // Add plugins
@@ -87,10 +88,10 @@ module.exports = function(eleventyConfig) {
 
     dir: {
       input: 'src',
+      output: outputDirectory,
       // These are all optional (defaults are shown):
       includes: "_includes",
       data: "_data",
-      output: outputDirectory
     }
   };
 };
