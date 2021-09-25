@@ -5,31 +5,30 @@
   "main": "index.js",
   "scripts": {
     "clean": "rimraf _site",
-    "serve:webpack": "webpack --mode development --watch",
+    "serve:postcss": "postcss src/styles/main.css --output _site/assets/main.css",
     "serve:eleventy": "ELEVENTY_ENV=development eleventy --serve",
-    "serve": "npm-run-all clean --parallel serve:*",
-    "build:webpack": "webpack --mode production",
+    "serve": "run-s clean serve:*",
+    "build:postcss": "postcss src/styles/main.css --output _site/assets/main.css",
     "build:eleventy": "ELEVENTY_ENV=production eleventy",
     "build": "NODE_ENV=production run-s clean build:*"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pelaakso/www2-eleventy.git"
+  },
   "devDependencies": {
     "@11ty/eleventy": "^0.12.1",
     "@11ty/eleventy-navigation": "^0.3.2",
     "@11ty/eleventy-plugin-syntaxhighlight": "^3.1.2",
     "autoprefixer": "^10.3.5",
-    "css-loader": "^6.3.0",
-    "mini-css-extract-plugin": "^2.3.0",
     "npm-run-all": "^4.1.5",
-    "postcss-loader": "^6.1.1",
+    "postcss": "^8.3.8",
+    "postcss-cli": "^9.0.0",
     "rimraf": "^3.0.2",
-    "tailwindcss": "^2.2.15",
-    "webpack": "^5.54.0",
-    "webpack-cli": "^4.8.0"
+    "tailwindcss": "^2.2.15"
   },
-  "dependencies": {
-    "postcss": "^8.3.8"
-  }
+  "dependencies": {}
 }
