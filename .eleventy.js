@@ -1,9 +1,11 @@
 const fs = require("fs");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const eleventySyntaxHighlightPlugin = require("@11ty/eleventy-plugin-syntaxhighlight");
+const { DateTime } = require("luxon");
 
 
 module.exports = function(eleventyConfig) {
+  // _site is also the 11ty default
   const outputDirectory = "_site";
 
   // Add plugins
@@ -32,21 +34,17 @@ module.exports = function(eleventyConfig) {
     ghostMode: false
   });
 
-  const {
-    DateTime
-  } = require("luxon");
-
   // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
   eleventyConfig.addFilter('htmlDateString', (dateObj) => {
     return DateTime.fromJSDate(dateObj, {
       zone: 'utc'
-    }).toFormat('yy-MM-dd');
+    }).toFormat('yyyy-MM-dd');
   });
 
   eleventyConfig.addFilter("readableDate", dateObj => {
     return DateTime.fromJSDate(dateObj, {
       zone: 'utc'
-    }).toFormat("dd.MM.yyyy");
+    }).toFormat("d.M.yyyy");
   });
 
   return {
@@ -87,10 +85,10 @@ module.exports = function(eleventyConfig) {
 
     dir: {
       input: 'src',
+      output: outputDirectory,
       // These are all optional (defaults are shown):
       includes: "_includes",
       data: "_data",
-      output: outputDirectory
     }
   };
 };
