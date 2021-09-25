@@ -1,6 +1,7 @@
 const fs = require("fs");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const eleventySyntaxHighlightPlugin = require("@11ty/eleventy-plugin-syntaxhighlight");
+const eleventyRssPlugin = require("@11ty/eleventy-plugin-rss");
 const { DateTime } = require("luxon");
 
 
@@ -11,6 +12,7 @@ module.exports = function(eleventyConfig) {
   // Add plugins
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
   eleventyConfig.addPlugin(eleventySyntaxHighlightPlugin);
+  eleventyConfig.addPlugin(eleventyRssPlugin);
 
   // Copy some resource to the output as-is
   //eleventyConfig.addPassthroughCopy(`**/*.png`);
