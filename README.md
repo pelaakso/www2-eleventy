@@ -4,6 +4,12 @@
 
 A test project creating a site using Eleventy static site generator.
 
+# Tecnologies
+
+Built and tested with
+
+* Node 14.17.x or newer 14
+
 # Credits
 
 This is based on https://github.com/tomreinert/minimal-11ty-tailwind-starter.
