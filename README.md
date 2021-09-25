@@ -4,7 +4,7 @@
 
 A test project creating a site using Eleventy static site generator.
 
-# Tecnologies
+# Technologies
 
 Built and tested with
 
