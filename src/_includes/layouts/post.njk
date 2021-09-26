@@ -2,8 +2,8 @@
 layout: layouts/base.njk
 ---
 
-<article class="blog-post">
-  <h1 class="text-3xl">{{title}}</h1>
-  <p class="mb-8">Posted {{ date | readableDate }}</p>
+<article class="prose">
+  <h1>{{title}}</h1>
+  <em>Posted {{ date | readableDate }}</em>
   {{ content | safe }}
 </article>
