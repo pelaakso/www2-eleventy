@@ -1,0 +1,19 @@
+---
+htmlTitle: Stuff
+title: Various stuff
+layout: layouts/page.njk
+permalink: /stuff/
+eleventyNavigation:
+  key: Stuff
+  order: 4
+---
+
+<h2 class="text-2xl mb-8">Hockey stuff</h2>
+
+{% for newsitem in hockeynews %}
+<article class="mb-6">
+    <p class="font-bold">{{ newsitem.title }}</p>
+    <p class="font-light italic mb-1">{{ newsitem.dateTime | isoDateToDateTime }} by {{ newsitem.authorName }}</p>
+    <p>{{ newsitem.summary }}</p>
+</article>
+{% endfor %}
