@@ -49,6 +49,10 @@ module.exports = function(eleventyConfig) {
     }).toFormat("d.M.yyyy");
   });
 
+  eleventyConfig.addFilter("isoDateToDateTime", dateString => {
+    return DateTime.fromISO(dateString).toFormat("d.M.yyyy HH:mm");
+  });
+
   return {
     // Control which files Eleventy will process
     // e.g.: *.md, *.njk, *.html, *.liquid
