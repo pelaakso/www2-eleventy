@@ -14,8 +14,12 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(eleventySyntaxHighlightPlugin);
   eleventyConfig.addPlugin(eleventyRssPlugin);
 
+  // When v1 of 11ty is released, should probably place the .eleventyignore entries here
+  // to have all settings in one place...
+
   // Copy some resource to the output as-is
   eleventyConfig.addPassthroughCopy({ "src/3rdparty/prism/prism.css": "assets/prism.css" });
+  eleventyConfig.addPassthroughCopy({ "src/favicon/*": "/" });
 
   // Override Browsersync defaults (used only in local development with --serve)
   // - make 404 error pages work in local development

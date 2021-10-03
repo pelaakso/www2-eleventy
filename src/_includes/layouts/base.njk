@@ -4,10 +4,21 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>{{ htmlTitle }}</title>
-    <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Atom feed of blog posts" />
+
+    <!-- Other styles -->
     <link rel="stylesheet" type="text/css" href="/assets/main.css" />
     <link rel="stylesheet" type="text/css" href="/assets/prism.css" />
+
+    <!-- Favicon stuff -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- RSS/Atom feed -->
+    <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Atom feed of blog posts" />
   </head>
   <body>
     {% include "../components/navigation.njk" %}

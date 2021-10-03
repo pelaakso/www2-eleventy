@@ -8,7 +8,7 @@ A test project creating a site using Eleventy static site generator.
 
 Built and tested with
 
-* Node 14.17.x or newer 14
+* Node 14.18.x or newer 14
 
 # Credits
 
