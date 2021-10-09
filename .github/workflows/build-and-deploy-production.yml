@@ -18,12 +18,15 @@ jobs:
         with:
           node-version: 14.x
           cache: npm
-          # defaults to search for the dependency file (package-lock.json) in the repository root
+          cache-dependency-path: |
+            website/package-lock.json
 
       - name: Install dependencies
+        working-directory: website
         run: npm ci
 
       - name: Build site
+        working-directory: website
         run: npm run build
 
       - name: Set up AWS credentials
@@ -34,5 +37,6 @@ jobs:
           aws-region: eu-central-1
 
       - name: Copy files to the production website with the AWS CLI
+        working-directory: website
         run: |
           aws s3 sync _site s3://www2-eleventy.petey952.be --delete
