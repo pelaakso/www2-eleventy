@@ -2,13 +2,18 @@
 
 # Web site using 11ty
 
-A test project creating a site using Eleventy static site generator.
+A test project creating a site using [Eleventy](https://www.11ty.dev/) static site generator.
 
 # Technologies
 
 Built and tested with
 
 * Node 14.18.x or newer 14
+
+Infra
+
+* AWS S3
+* AWS Route 53
 
 # Credits
 
