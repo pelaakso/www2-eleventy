@@ -19,10 +19,13 @@ jobs:
         with:
           node-version: 14.x
           cache: npm
-          # defaults to search for the dependency file (package-lock.json) in the repository root
+          cache-dependency-path: |
+            website/package-lock.json
 
       - name: Install dependencies
+        working-directory: website
         run: npm ci
 
       - name: Build site
+        working-directory: website
         run: npm run build
