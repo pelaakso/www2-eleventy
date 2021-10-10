@@ -10,7 +10,7 @@ export class InfraStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    const recordName = 'www2-eleventy-dev';
+    const recordName = 'www2-eleventy';
     const domainName = 'petey952.be';
     const bucketName = `${recordName}.${domainName}`;
 

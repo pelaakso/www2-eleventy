@@ -10,7 +10,7 @@ Object {
           "HostedZoneId": "Z21DNDUVLTQW6Q",
         },
         "HostedZoneId": "DUMMY",
-        "Name": "www2-eleventy-dev.petey952.be.",
+        "Name": "www2-eleventy.petey952.be.",
         "Type": "A",
       },
       "Type": "AWS::Route53::RecordSet",
@@ -18,7 +18,7 @@ Object {
     "Www2EleventyWebBucket6F46ADF8": Object {
       "DeletionPolicy": "Retain",
       "Properties": Object {
-        "BucketName": "www2-eleventy-dev.petey952.be",
+        "BucketName": "www2-eleventy.petey952.be",
         "WebsiteConfiguration": Object {
           "ErrorDocument": "404.html",
           "IndexDocument": "index.html",
