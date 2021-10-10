@@ -19,4 +19,5 @@ Infra is defined as code using [CDK](https://docs.aws.amazon.com/cdk/index.html)
 
 # Credits
 
-This is based on https://github.com/tomreinert/minimal-11ty-tailwind-starter.
+Web site is based on https://github.com/tomreinert/minimal-11ty-tailwind-starter.
+Mainly CSS and layouts remain from the original implementation.
