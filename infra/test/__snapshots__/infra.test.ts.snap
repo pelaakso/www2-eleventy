@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Whole stack snapshot 1`] = `
+Object {
+  "Resources": Object {
+    "Www2EleventyAliasRecord96528953": Object {
+      "Properties": Object {
+        "AliasTarget": Object {
+          "DNSName": "s3-website.eu-central-1.amazonaws.com",
+          "HostedZoneId": "Z21DNDUVLTQW6Q",
+        },
+        "HostedZoneId": "DUMMY",
+        "Name": "www2-eleventy-dev.petey952.be.",
+        "Type": "A",
+      },
+      "Type": "AWS::Route53::RecordSet",
+    },
+    "Www2EleventyWebBucket6F46ADF8": Object {
+      "DeletionPolicy": "Retain",
+      "Properties": Object {
+        "BucketName": "www2-eleventy-dev.petey952.be",
+        "WebsiteConfiguration": Object {
+          "ErrorDocument": "404.html",
+          "IndexDocument": "index.html",
+        },
+      },
+      "Type": "AWS::S3::Bucket",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "Www2EleventyWebBucketPolicyEBD8B99C": Object {
+      "Properties": Object {
+        "Bucket": Object {
+          "Ref": "Www2EleventyWebBucket6F46ADF8",
+        },
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "s3:GetObject",
+              "Effect": "Allow",
+              "Principal": Object {
+                "AWS": "*",
+              },
+              "Resource": Object {
+                "Fn::Join": Array [
+                  "",
+                  Array [
+                    Object {
+                      "Fn::GetAtt": Array [
+                        "Www2EleventyWebBucket6F46ADF8",
+                        "Arn",
+                      ],
+                    },
+                    "/*",
+                  ],
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::S3::BucketPolicy",
+    },
+  },
+}
+`;

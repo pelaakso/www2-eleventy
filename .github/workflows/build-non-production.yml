@@ -20,9 +20,18 @@ jobs:
           node-version: 14.x
           cache: npm
           cache-dependency-path: |
+            infra/package-lock.json
             website/package-lock.json
 
-      - name: Install dependencies
+      - name: Install infra dependencies
+        working-directory: infra
+        run: npm ci
+
+      - name: Test infra
+        working-directory: infra
+        run: npm run test
+
+      - name: Install website dependencies
         working-directory: website
         run: npm ci
 

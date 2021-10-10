@@ -1,3 +1,23 @@
-.vscode/
+#
+# Infra
+#
+infra/**/*.js
+!infra/jest.config.js
+infra/**/*.d.ts
+
+# CDK asset staging directory
+infra/.cdk.staging
+infra/cdk.out
+
+
+#
+# website
+#
+website/_site/
+
+
+#
+# Common
+#
 node_modules/
-_site/
+.vscode/
