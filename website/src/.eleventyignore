@@ -1,5 +1,2 @@
 # Handled by passthrough configuration, don't copy this stuff to normal site path
 favicon/
-
-# My helper functions etc. not part of the website
-lib/
