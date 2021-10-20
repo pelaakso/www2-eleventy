@@ -8,5 +8,5 @@ const jsonStr = fs.readFileSync(assetsFile);
 const assetsJson = JSON.parse(jsonStr);
 
 module.exports = {
-  stylesCss: `/assets/${assetsJson.cssFile}`,
+  mainStylesCss: `/assets/${assetsJson.cssFile}`,
 };
