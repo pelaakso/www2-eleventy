@@ -6,17 +6,22 @@ A test project creating a site using [Eleventy](https://www.11ty.dev/) static si
 
 # Technologies
 
-Built and tested with
+## Tools etc.
 
 * Node 14.18.x or newer 14
 
-Infra
+## Infra
 
 * AWS S3
 * AWS Route 53
 
 Infra is defined as code using [CDK](https://docs.aws.amazon.com/cdk/index.html).
 
+## CI
+
+* GitHub Actions
+
 # Credits
 
-This is based on https://github.com/tomreinert/minimal-11ty-tailwind-starter.
+Web site is based on https://github.com/tomreinert/minimal-11ty-tailwind-starter.
+Mainly CSS and layouts remain from the original implementation.
