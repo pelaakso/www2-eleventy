@@ -19,7 +19,8 @@ export class InfraStack extends cdk.Stack {
     const domainName = 'petey952.be';
     const apiCertificateArn = 'arn:aws:acm:eu-central-1:140966923789:certificate/c96ba383-ae37-49e3-a8ea-a58eb96da369';
     const bucketName = `${recordName}.${domainName}`;
-    const apiGwCustomDomainNameRecord = `${recordName}-api.${domainName}`;
+    const apiRecordName = `${recordName}-api`;
+    const apiGwCustomDomainNameRecord = `${apiRecordName}.${domainName}`;
     const corsAllowedOrigins = [
       'http://localhost:3000',
       'http://localhost:8080',
@@ -90,6 +91,13 @@ export class InfraStack extends cdk.Stack {
       methods: [
         apigw.HttpMethod.POST,
       ],
+    });
+
+    new route53.ARecord(this, 'Www2EleventyApiAliasRecord', {
+      zone: hostedZone,
+      recordName: apiRecordName,
+      target: route53.RecordTarget.fromAlias(new route53targets.ApiGatewayv2DomainProperties(
+        apiGwCustomDomainName.regionalDomainName, apiGwCustomDomainName.regionalHostedZoneId)),
     });
 
     /* To be done later.
