@@ -2,6 +2,20 @@
 
 exports[`Whole stack snapshot 1`] = `
 Object {
+  "Parameters": Object {
+    "AssetParametersa6538b308ae5745b3e38d6ad7cbfedf8c1d960d02dcc3518c36c3607cf26106cArtifactHash776F98E1": Object {
+      "Description": "Artifact hash for asset \\"a6538b308ae5745b3e38d6ad7cbfedf8c1d960d02dcc3518c36c3607cf26106c\\"",
+      "Type": "String",
+    },
+    "AssetParametersa6538b308ae5745b3e38d6ad7cbfedf8c1d960d02dcc3518c36c3607cf26106cS3Bucket232F6E4F": Object {
+      "Description": "S3 bucket for asset \\"a6538b308ae5745b3e38d6ad7cbfedf8c1d960d02dcc3518c36c3607cf26106c\\"",
+      "Type": "String",
+    },
+    "AssetParametersa6538b308ae5745b3e38d6ad7cbfedf8c1d960d02dcc3518c36c3607cf26106cS3VersionKeyCD075A4A": Object {
+      "Description": "S3 key for asset version \\"a6538b308ae5745b3e38d6ad7cbfedf8c1d960d02dcc3518c36c3607cf26106c\\"",
+      "Type": "String",
+    },
+  },
   "Resources": Object {
     "Www2EleventyAliasRecord96528953": Object {
       "Properties": Object {
@@ -14,6 +28,255 @@ Object {
         "Type": "A",
       },
       "Type": "AWS::Route53::RecordSet",
+    },
+    "Www2EleventyApiAliasRecordB1B79CC2": Object {
+      "Properties": Object {
+        "AliasTarget": Object {
+          "DNSName": Object {
+            "Fn::GetAtt": Array [
+              "Www2EleventyApiGwCustomDomainName9E5BC894",
+              "RegionalDomainName",
+            ],
+          },
+          "HostedZoneId": Object {
+            "Fn::GetAtt": Array [
+              "Www2EleventyApiGwCustomDomainName9E5BC894",
+              "RegionalHostedZoneId",
+            ],
+          },
+        },
+        "HostedZoneId": "DUMMY",
+        "Name": "www2-eleventy-api.petey952.be.",
+        "Type": "A",
+      },
+      "Type": "AWS::Route53::RecordSet",
+    },
+    "Www2EleventyApiGwCustomDomainName9E5BC894": Object {
+      "Properties": Object {
+        "DomainName": "www2-eleventy-api.petey952.be",
+        "DomainNameConfigurations": Array [
+          Object {
+            "CertificateArn": "arn:aws:acm:eu-central-1:140966923789:certificate/c96ba383-ae37-49e3-a8ea-a58eb96da369",
+            "EndpointType": "REGIONAL",
+          },
+        ],
+      },
+      "Type": "AWS::ApiGatewayV2::DomainName",
+    },
+    "Www2EleventyHttpApi7C0C73DA": Object {
+      "Properties": Object {
+        "CorsConfiguration": Object {
+          "AllowCredentials": true,
+          "AllowHeaders": Array [
+            "Authorization",
+            "Content-Type",
+          ],
+          "AllowMethods": Array [
+            "GET",
+            "POST",
+            "OPTIONS",
+          ],
+          "AllowOrigins": Array [
+            "http://localhost:3000",
+            "http://localhost:8080",
+            "http://www2-eleventy.petey952.be",
+          ],
+          "MaxAge": 300,
+        },
+        "Description": "Api Gateway for Www2Eleventy backend",
+        "Name": "Www2EleventyBackend",
+        "ProtocolType": "HTTP",
+      },
+      "Type": "AWS::ApiGatewayV2::Api",
+    },
+    "Www2EleventyHttpApiDefaultStage685CF17A": Object {
+      "DependsOn": Array [
+        "Www2EleventyApiGwCustomDomainName9E5BC894",
+      ],
+      "Properties": Object {
+        "ApiId": Object {
+          "Ref": "Www2EleventyHttpApi7C0C73DA",
+        },
+        "AutoDeploy": true,
+        "StageName": "$default",
+      },
+      "Type": "AWS::ApiGatewayV2::Stage",
+    },
+    "Www2EleventyHttpApiDefaultStageDefaultMyTestStackWww2EleventyApiGwCustomDomainNameundefinedEC10E157": Object {
+      "DependsOn": Array [
+        "Www2EleventyApiGwCustomDomainName9E5BC894",
+        "Www2EleventyHttpApiDefaultStage685CF17A",
+      ],
+      "Properties": Object {
+        "ApiId": Object {
+          "Ref": "Www2EleventyHttpApi7C0C73DA",
+        },
+        "DomainName": Object {
+          "Ref": "Www2EleventyApiGwCustomDomainName9E5BC894",
+        },
+        "Stage": "$default",
+      },
+      "Type": "AWS::ApiGatewayV2::ApiMapping",
+    },
+    "Www2EleventyHttpApiPOSTv1subscribenewsletter8A9A85F4": Object {
+      "Properties": Object {
+        "ApiId": Object {
+          "Ref": "Www2EleventyHttpApi7C0C73DA",
+        },
+        "AuthorizationType": "NONE",
+        "RouteKey": "POST /v1/subscribe-newsletter",
+        "Target": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "integrations/",
+              Object {
+                "Ref": "Www2EleventyHttpApiPOSTv1subscribenewsletterHttpIntegrationf43c2ff475f8ba73dc8ed1de4b5e7313FEE92118",
+              },
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::ApiGatewayV2::Route",
+    },
+    "Www2EleventyHttpApiPOSTv1subscribenewsletterHttpIntegrationf43c2ff475f8ba73dc8ed1de4b5e7313FEE92118": Object {
+      "Properties": Object {
+        "ApiId": Object {
+          "Ref": "Www2EleventyHttpApi7C0C73DA",
+        },
+        "IntegrationType": "AWS_PROXY",
+        "IntegrationUri": Object {
+          "Fn::GetAtt": Array [
+            "Www2EleventySubscribeNewsletterBA14B32E",
+            "Arn",
+          ],
+        },
+        "PayloadFormatVersion": "2.0",
+      },
+      "Type": "AWS::ApiGatewayV2::Integration",
+    },
+    "Www2EleventyHttpApiPOSTv1subscribenewsletterMyTestStackWww2EleventyHttpApiPOSTv1subscribenewsletter884EB522PermissionDC9C421A": Object {
+      "Properties": Object {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": Object {
+          "Fn::GetAtt": Array [
+            "Www2EleventySubscribeNewsletterBA14B32E",
+            "Arn",
+          ],
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "arn:",
+              Object {
+                "Ref": "AWS::Partition",
+              },
+              ":execute-api:eu-central-1:140966923789:",
+              Object {
+                "Ref": "Www2EleventyHttpApi7C0C73DA",
+              },
+              "/*/*/v1/subscribe-newsletter",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+    "Www2EleventySubscribeNewsletterBA14B32E": Object {
+      "DependsOn": Array [
+        "Www2EleventySubscribeNewsletterServiceRole7A916BAB",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "S3Bucket": Object {
+            "Ref": "AssetParametersa6538b308ae5745b3e38d6ad7cbfedf8c1d960d02dcc3518c36c3607cf26106cS3Bucket232F6E4F",
+          },
+          "S3Key": Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                Object {
+                  "Fn::Select": Array [
+                    0,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParametersa6538b308ae5745b3e38d6ad7cbfedf8c1d960d02dcc3518c36c3607cf26106cS3VersionKeyCD075A4A",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "Fn::Select": Array [
+                    1,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParametersa6538b308ae5745b3e38d6ad7cbfedf8c1d960d02dcc3518c36c3607cf26106cS3VersionKeyCD075A4A",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            ],
+          },
+        },
+        "Description": "Www2Eleventy: handler for subscribe to newsletter",
+        "Environment": Object {
+          "Variables": Object {
+            "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
+          },
+        },
+        "FunctionName": "Www2EleventySubscribeNewsletter",
+        "Handler": "index.lambdaHandler",
+        "ReservedConcurrentExecutions": 10,
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "Www2EleventySubscribeNewsletterServiceRole7A916BAB",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs14.x",
+        "Timeout": 15,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "Www2EleventySubscribeNewsletterServiceRole7A916BAB": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
     },
     "Www2EleventyWebBucket6F46ADF8": Object {
       "DeletionPolicy": "Retain",
