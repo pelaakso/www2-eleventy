@@ -50,6 +50,7 @@ export class InfraStack extends cdk.Stack {
 
 
     const subscribeNewsletterFn = new lambdaNode.NodejsFunction(this, 'Www2EleventySubscribeNewsletter', {
+      architecture: lambda.Architecture.ARM_64,
       entry: 'src/functions/subscribeNewsletter.ts',
       handler: 'lambdaHandler',
       runtime: lambda.Runtime.NODEJS_14_X,
