@@ -87,7 +87,7 @@ async function sendSubscription(emailAddress) {
 
 async function confirmSubscription(toBeShownElements, toBeHiddenElements) {
   for (e of toBeShownElements) {
-    confirmElement.classList.remove('hidden');
+    e.classList.remove('hidden');
   }
 
   for (e of toBeHiddenElements) {
