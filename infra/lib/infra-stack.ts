@@ -26,6 +26,10 @@ export class InfraStack extends cdk.Stack {
       'http://localhost:8080',
       `http://${recordName}.${domainName}`,
     ];
+    const corsAllowedHeaders = [
+      'Authorization',
+      'Content-Type',
+    ];
 
     this.webSiteBucket = new s3.Bucket(this, 'Www2EleventyWebBucket', {
       autoDeleteObjects: false,
@@ -70,7 +74,7 @@ export class InfraStack extends cdk.Stack {
       apiName: `Www2EleventyBackend`,
       corsPreflight: {
           allowCredentials: true,
-          allowHeaders: ['Authorization'],
+          allowHeaders: corsAllowedHeaders,
           allowMethods: [
             apigw.CorsHttpMethod.GET,
             apigw.CorsHttpMethod.POST,
