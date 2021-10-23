@@ -7,5 +7,14 @@ eleventyNavigation:
   key: Blog
   order: 2
 ---
+
+<h2 class="text-2xl mb-4">Categories</h2>
+
+{% for tag in collections.distinctBlogPostTags %}
+<a href="tags/{{ tag }}" class="bg-gray-200 p-1">{{ tag | capitalize }}</a>
+{% endfor %}
+
+<h2 class="text-2xl mt-4 mb-4">All posts</h2>
+
 {% set postslist = collections.posts | reverse %}
 {% include "components/postslist.njk" %}
