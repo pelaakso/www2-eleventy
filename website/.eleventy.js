@@ -57,6 +57,26 @@ module.exports = function(eleventyConfig) {
     return DateTime.fromISO(dateString).toFormat("d.M.yyyy HH:mm");
   });
 
+  eleventyConfig.addFilter("capitalize", str => {
+    if (typeof str == 'string') {
+      return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+    }
+    return str;
+  });
+
+  eleventyConfig.addCollection("distinctBlogPostTags", collectionApi => {
+    const distinctBlogPostTags = new Set();
+    for (item of collectionApi.getFilteredByTag("posts")) {
+      for (tag of item.data.tags) {
+        if (tag !== "posts") {
+          distinctBlogPostTags.add(tag);
+        }
+      }
+    }
+
+    return Array.from(distinctBlogPostTags);
+  });
+
   return {
     // Control which files Eleventy will process
     // e.g.: *.md, *.njk, *.html, *.liquid

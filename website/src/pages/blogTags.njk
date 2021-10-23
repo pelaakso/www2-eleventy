@@ -1,0 +1,18 @@
+---
+pagination:
+  data: collections
+  size: 1
+  alias: tag
+  filter:
+    - all
+    - distinctBlogPostTags
+htmlTitle: Blog posts
+title: Blog posts
+layout: layouts/page.njk
+permalink: /blog/tags/{{ tag }}/
+---
+
+<h2 class="text-2xl mb-4">Blog posts on {{ tag }}</h2>
+
+{% set postslist = collections[ tag ] | reverse %}
+{% include "components/postslist.njk" %}
