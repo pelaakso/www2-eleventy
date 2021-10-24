@@ -74,7 +74,7 @@ module.exports = function(eleventyConfig) {
       }
     }
 
-    return Array.from(distinctBlogPostTags);
+    return Array.from(distinctBlogPostTags).sort();
   });
 
   return {
