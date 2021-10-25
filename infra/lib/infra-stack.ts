@@ -22,12 +22,12 @@ export class InfraStack extends cdk.Stack {
     const apiRecordName = `${recordName}-api`;
     const apiGwCustomDomainNameRecord = `${apiRecordName}.${domainName}`;
     const corsAllowedOrigins = [
-      'http://localhost:3000',
+      'http://localhost:3000', // for prettier: thanks for nothing
       'http://localhost:8080',
       `http://${recordName}.${domainName}`,
     ];
     const corsAllowedHeaders = [
-      'Authorization',
+      'Authorization', //
       'Content-Type',
     ];
 
@@ -40,14 +40,13 @@ export class InfraStack extends cdk.Stack {
       websiteIndexDocument: 'index.html',
     });
 
-    const hostedZone = route53.HostedZone.fromLookup(this, 'Zone', {domainName});
+    const hostedZone = route53.HostedZone.fromLookup(this, 'Zone', { domainName });
 
     this.webSiteARecord = new route53.ARecord(this, 'Www2EleventyAliasRecord', {
       zone: hostedZone,
       recordName,
       target: route53.RecordTarget.fromAlias(new route53targets.BucketWebsiteTarget(this.webSiteBucket)),
     });
-
 
     const subscribeNewsletterFn = new lambdaNode.NodejsFunction(this, 'Www2EleventySubscribeNewsletter', {
       architecture: lambda.Architecture.ARM_64,
@@ -59,7 +58,6 @@ export class InfraStack extends cdk.Stack {
       reservedConcurrentExecutions: 10,
       timeout: cdk.Duration.seconds(15),
     });
-
 
     const subscribeNewsletterIntegration = new apigwint.LambdaProxyIntegration({
       handler: subscribeNewsletterFn,
@@ -74,15 +72,15 @@ export class InfraStack extends cdk.Stack {
     const httpApi = new apigw.HttpApi(this, 'Www2EleventyHttpApi', {
       apiName: `Www2EleventyBackend`,
       corsPreflight: {
-          allowCredentials: true,
-          allowHeaders: corsAllowedHeaders,
-          allowMethods: [
-            apigw.CorsHttpMethod.GET,
-            apigw.CorsHttpMethod.POST,
-            apigw.CorsHttpMethod.OPTIONS,
-          ],
-          allowOrigins: corsAllowedOrigins,
-          maxAge: cdk.Duration.minutes(5),
+        allowCredentials: true,
+        allowHeaders: corsAllowedHeaders,
+        allowMethods: [
+          apigw.CorsHttpMethod.GET, //
+          apigw.CorsHttpMethod.POST,
+          apigw.CorsHttpMethod.OPTIONS,
+        ],
+        allowOrigins: corsAllowedOrigins,
+        maxAge: cdk.Duration.minutes(5),
       },
       defaultDomainMapping: {
         domainName: apiGwCustomDomainName,
@@ -93,16 +91,18 @@ export class InfraStack extends cdk.Stack {
     httpApi.addRoutes({
       path: '/v1/subscribe-newsletter',
       integration: subscribeNewsletterIntegration,
-      methods: [
-        apigw.HttpMethod.POST,
-      ],
+      methods: [apigw.HttpMethod.POST],
     });
 
     new route53.ARecord(this, 'Www2EleventyApiAliasRecord', {
       zone: hostedZone,
       recordName: apiRecordName,
-      target: route53.RecordTarget.fromAlias(new route53targets.ApiGatewayv2DomainProperties(
-        apiGwCustomDomainName.regionalDomainName, apiGwCustomDomainName.regionalHostedZoneId)),
+      target: route53.RecordTarget.fromAlias(
+        new route53targets.ApiGatewayv2DomainProperties(
+          apiGwCustomDomainName.regionalDomainName,
+          apiGwCustomDomainName.regionalHostedZoneId
+        )
+      ),
     });
 
     /* To be done later.
