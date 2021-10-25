@@ -29,6 +29,9 @@ jobs:
       - name: Install infra dependencies
         run: npm ci
 
+      - name: Lint
+        run: npx eslint .
+
       - name: Test infra
         run: npm run test
 
