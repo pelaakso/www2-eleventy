@@ -2,6 +2,8 @@
 # Infra
 #
 infra/**/*.js
+!infra/.eslintrc.js
+!infra/.prettierrc.js
 !infra/jest.config.js
 infra/**/*.d.ts
 
