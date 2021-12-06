@@ -6,19 +6,21 @@
   },
   "scripts": {
     "build": "tsc",
+    "clean": "npx rimraf '+(bin|lib|functions|test|utils)/**/+(*.d.ts|*.js)'",
     "watch": "tsc -w",
     "test": "npm run build && jest",
     "snap": "jest",
     "cdk": "npx cdk"
   },
   "devDependencies": {
-    "@aws-cdk/assert": "^1.134.0",
+    "@aws-cdk/aws-apigatewayv2-alpha": "^2.0.0-alpha.11",
+    "@aws-cdk/aws-apigatewayv2-integrations-alpha": "^2.0.0-alpha.11",
     "@types/aws-lambda": "^8.10.86",
     "@types/jest": "^27.0.3",
     "@types/node": "^16.11.11",
     "@typescript-eslint/eslint-plugin": "^5.5.0",
     "@typescript-eslint/parser": "^5.5.0",
-    "aws-cdk": "^1.134.0",
+    "aws-cdk": "^2.0.0",
     "esbuild": "^0.14.2",
     "eslint": "^8.4.0",
     "eslint-config-prettier": "^8.3.0",
@@ -30,14 +32,8 @@
     "typescript": "^4.5.2"
   },
   "dependencies": {
-    "@aws-cdk/aws-apigatewayv2": "^1.134.0",
-    "@aws-cdk/aws-apigatewayv2-integrations": "^1.134.0",
-    "@aws-cdk/aws-certificatemanager": "^1.134.0",
-    "@aws-cdk/aws-lambda-nodejs": "^1.134.0",
-    "@aws-cdk/aws-route53": "^1.134.0",
-    "@aws-cdk/aws-route53-targets": "^1.134.0",
-    "@aws-cdk/aws-s3": "^1.134.0",
-    "@aws-cdk/core": "^1.134.0",
+    "aws-cdk-lib": "^2.0.0",
+    "constructs": "^10.0.10",
     "source-map-support": "^0.5.21"
   }
 }
