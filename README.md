@@ -16,7 +16,7 @@ A test project creating a site using [Eleventy](https://www.11ty.dev/) static si
 * AWS S3
 * AWS Route 53
 
-Infra is defined as code using [CDK](https://docs.aws.amazon.com/cdk/index.html).
+Infra is defined as code using [CDK v2](https://docs.aws.amazon.com/cdk/v2/guide/home.html).
 
 ## CI
 
