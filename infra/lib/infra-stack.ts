@@ -107,13 +107,6 @@ export class InfraStack extends cdk.Stack {
     });
 
     /* To be done later.
-
-    const provider = new iam.OpenIdConnectProvider(this, 'GitHubOIDCProvider', {
-      url: 'https://vstoken.actions.githubusercontent.com',
-      clientIds: [ 'sigstore' ],
-      thumbprints: ['a031c46782e6e6c662c2c87c76da9aa62ccabd8e'],
-    });
-
     const role = new iam.Role(this, 'Rooli', {
       assumedBy: new iam.OpenIdConnectPrincipal(provider),
     });
