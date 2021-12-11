@@ -60,10 +60,13 @@ export class InfraStack extends cdk.Stack {
       timeout: cdk.Duration.seconds(15),
     });
 
-    const subscribeNewsletterIntegration = new apigwint.LambdaProxyIntegration({
-      handler: subscribeNewsletterFn,
-      payloadFormatVersion: apigw.PayloadFormatVersion.VERSION_2_0,
-    });
+    const subscribeNewsletterIntegration = new apigwint.HttpLambdaIntegration(
+      'subscribeNewsletterIntegration',
+      subscribeNewsletterFn,
+      {
+        payloadFormatVersion: apigw.PayloadFormatVersion.VERSION_2_0,
+      }
+    );
 
     const apiGwCustomDomainName = new apigw.DomainName(this, 'Www2EleventyApiGwCustomDomainName', {
       domainName: apiGwCustomDomainNameRecord,

@@ -124,7 +124,7 @@ Object {
             Array [
               "integrations/",
               Object {
-                "Ref": "Www2EleventyHttpApiPOSTv1subscribenewsletterHttpIntegrationf43c2ff475f8ba73dc8ed1de4b5e7313FEE92118",
+                "Ref": "Www2EleventyHttpApiPOSTv1subscribenewslettersubscribeNewsletterIntegrationF02CD1E2",
               },
             ],
           ],
@@ -132,7 +132,7 @@ Object {
       },
       "Type": "AWS::ApiGatewayV2::Route",
     },
-    "Www2EleventyHttpApiPOSTv1subscribenewsletterHttpIntegrationf43c2ff475f8ba73dc8ed1de4b5e7313FEE92118": Object {
+    "Www2EleventyHttpApiPOSTv1subscribenewslettersubscribeNewsletterIntegrationF02CD1E2": Object {
       "Properties": Object {
         "ApiId": Object {
           "Ref": "Www2EleventyHttpApi7C0C73DA",
@@ -148,7 +148,7 @@ Object {
       },
       "Type": "AWS::ApiGatewayV2::Integration",
     },
-    "Www2EleventyHttpApiPOSTv1subscribenewsletterMyTestStackWww2EleventyHttpApiPOSTv1subscribenewsletter884EB522PermissionDC9C421A": Object {
+    "Www2EleventyHttpApiPOSTv1subscribenewslettersubscribeNewsletterIntegrationPermissionDE6330B2": Object {
       "Properties": Object {
         "Action": "lambda:InvokeFunction",
         "FunctionName": Object {
