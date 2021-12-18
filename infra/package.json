@@ -5,6 +5,7 @@
     "infra": "bin/infra.js"
   },
   "scripts": {
+    "all": "npm run clean && npx eslint . && npm run test",
     "build": "tsc",
     "clean": "npx rimraf '+(bin|lib|functions|test|utils)/**/+(*.d.ts|*.js)'",
     "watch": "tsc -w",
@@ -22,7 +23,7 @@
     "@typescript-eslint/parser": "^5.7.0",
     "aws-cdk": "^2.2.0",
     "esbuild": "^0.14.5",
-    "eslint": "^8.4.1",
+    "eslint": "^8.5.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "jest": "^27.4.5",
