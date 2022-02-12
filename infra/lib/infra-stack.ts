@@ -1,18 +1,19 @@
-import * as cdk from '@aws-cdk/core';
-import * as acm from '@aws-cdk/aws-certificatemanager';
-import * as apigw from '@aws-cdk/aws-apigatewayv2';
-import * as apigwint from '@aws-cdk/aws-apigatewayv2-integrations';
-import * as lambda from '@aws-cdk/aws-lambda';
-import * as lambdaNode from '@aws-cdk/aws-lambda-nodejs';
-import * as s3 from '@aws-cdk/aws-s3';
-import * as route53 from '@aws-cdk/aws-route53';
-import * as route53targets from '@aws-cdk/aws-route53-targets';
+import * as cdk from 'aws-cdk-lib';
+import * as acm from 'aws-cdk-lib/aws-certificatemanager';
+import * as apigw from '@aws-cdk/aws-apigatewayv2-alpha';
+import * as apigwint from '@aws-cdk/aws-apigatewayv2-integrations-alpha';
+import * as lambda from 'aws-cdk-lib/aws-lambda';
+import * as lambdaNode from 'aws-cdk-lib/aws-lambda-nodejs';
+import * as s3 from 'aws-cdk-lib/aws-s3';
+import * as route53 from 'aws-cdk-lib/aws-route53';
+import * as route53targets from 'aws-cdk-lib/aws-route53-targets';
+import { Construct } from 'constructs';
 
 export class InfraStack extends cdk.Stack {
   public readonly webSiteBucket: s3.IBucket;
   public readonly webSiteARecord: route53.ARecord;
 
-  constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
+  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
     const recordName = 'www2-eleventy';
@@ -59,10 +60,13 @@ export class InfraStack extends cdk.Stack {
       timeout: cdk.Duration.seconds(15),
     });
 
-    const subscribeNewsletterIntegration = new apigwint.LambdaProxyIntegration({
-      handler: subscribeNewsletterFn,
-      payloadFormatVersion: apigw.PayloadFormatVersion.VERSION_2_0,
-    });
+    const subscribeNewsletterIntegration = new apigwint.HttpLambdaIntegration(
+      'subscribeNewsletterIntegration',
+      subscribeNewsletterFn,
+      {
+        payloadFormatVersion: apigw.PayloadFormatVersion.VERSION_2_0,
+      }
+    );
 
     const apiGwCustomDomainName = new apigw.DomainName(this, 'Www2EleventyApiGwCustomDomainName', {
       domainName: apiGwCustomDomainNameRecord,
@@ -106,13 +110,6 @@ export class InfraStack extends cdk.Stack {
     });
 
     /* To be done later.
-
-    const provider = new iam.OpenIdConnectProvider(this, 'GitHubOIDCProvider', {
-      url: 'https://vstoken.actions.githubusercontent.com',
-      clientIds: [ 'sigstore' ],
-      thumbprints: ['a031c46782e6e6c662c2c87c76da9aa62ccabd8e'],
-    });
-
     const role = new iam.Role(this, 'Rooli', {
       assumedBy: new iam.OpenIdConnectPrincipal(provider),
     });

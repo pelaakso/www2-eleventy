@@ -3,17 +3,10 @@
 exports[`Whole stack snapshot 1`] = `
 Object {
   "Parameters": Object {
-    "AssetParameters069b252cbc16fbc274954a16917b809950e34ee443474d3e3dd6579e3a1f3f10ArtifactHashB59B88D1": Object {
-      "Description": "Artifact hash for asset \\"069b252cbc16fbc274954a16917b809950e34ee443474d3e3dd6579e3a1f3f10\\"",
-      "Type": "String",
-    },
-    "AssetParameters069b252cbc16fbc274954a16917b809950e34ee443474d3e3dd6579e3a1f3f10S3BucketDBE077CB": Object {
-      "Description": "S3 bucket for asset \\"069b252cbc16fbc274954a16917b809950e34ee443474d3e3dd6579e3a1f3f10\\"",
-      "Type": "String",
-    },
-    "AssetParameters069b252cbc16fbc274954a16917b809950e34ee443474d3e3dd6579e3a1f3f10S3VersionKey464D1988": Object {
-      "Description": "S3 key for asset version \\"069b252cbc16fbc274954a16917b809950e34ee443474d3e3dd6579e3a1f3f10\\"",
-      "Type": "String",
+    "BootstrapVersion": Object {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
     },
   },
   "Resources": Object {
@@ -131,7 +124,7 @@ Object {
             Array [
               "integrations/",
               Object {
-                "Ref": "Www2EleventyHttpApiPOSTv1subscribenewsletterHttpIntegrationf43c2ff475f8ba73dc8ed1de4b5e7313FEE92118",
+                "Ref": "Www2EleventyHttpApiPOSTv1subscribenewslettersubscribeNewsletterIntegrationF02CD1E2",
               },
             ],
           ],
@@ -139,7 +132,7 @@ Object {
       },
       "Type": "AWS::ApiGatewayV2::Route",
     },
-    "Www2EleventyHttpApiPOSTv1subscribenewsletterHttpIntegrationf43c2ff475f8ba73dc8ed1de4b5e7313FEE92118": Object {
+    "Www2EleventyHttpApiPOSTv1subscribenewslettersubscribeNewsletterIntegrationF02CD1E2": Object {
       "Properties": Object {
         "ApiId": Object {
           "Ref": "Www2EleventyHttpApi7C0C73DA",
@@ -155,7 +148,7 @@ Object {
       },
       "Type": "AWS::ApiGatewayV2::Integration",
     },
-    "Www2EleventyHttpApiPOSTv1subscribenewsletterMyTestStackWww2EleventyHttpApiPOSTv1subscribenewsletter884EB522PermissionDC9C421A": Object {
+    "Www2EleventyHttpApiPOSTv1subscribenewslettersubscribeNewsletterIntegrationPermissionDE6330B2": Object {
       "Properties": Object {
         "Action": "lambda:InvokeFunction",
         "FunctionName": Object {
@@ -193,42 +186,8 @@ Object {
           "arm64",
         ],
         "Code": Object {
-          "S3Bucket": Object {
-            "Ref": "AssetParameters069b252cbc16fbc274954a16917b809950e34ee443474d3e3dd6579e3a1f3f10S3BucketDBE077CB",
-          },
-          "S3Key": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Fn::Select": Array [
-                    0,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParameters069b252cbc16fbc274954a16917b809950e34ee443474d3e3dd6579e3a1f3f10S3VersionKey464D1988",
-                        },
-                      ],
-                    },
-                  ],
-                },
-                Object {
-                  "Fn::Select": Array [
-                    1,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParameters069b252cbc16fbc274954a16917b809950e34ee443474d3e3dd6579e3a1f3f10S3VersionKey464D1988",
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            ],
-          },
+          "S3Bucket": "cdk-hnb659fds-assets-140966923789-eu-central-1",
+          "S3Key": "a6e4f851987455ff946140ab502d16a8ba433a25cd5a5909eb3cb69c9d96f014.zip",
         },
         "Description": "Www2Eleventy: handler for subscribe to newsletter",
         "Environment": Object {
@@ -326,6 +285,33 @@ Object {
         },
       },
       "Type": "AWS::S3::BucketPolicy",
+    },
+  },
+  "Rules": Object {
+    "CheckBootstrapVersion": Object {
+      "Assertions": Array [
+        Object {
+          "Assert": Object {
+            "Fn::Not": Array [
+              Object {
+                "Fn::Contains": Array [
+                  Array [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  Object {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
     },
   },
 }

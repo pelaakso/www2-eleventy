@@ -8,14 +8,15 @@ A test project creating a site using [Eleventy](https://www.11ty.dev/) static si
 
 ## Tools etc.
 
-* Node 14.18.x or newer 14
+* Node 14.18.x or newer 14. This should match the latest version available in AWS Lambda.
+* TailwindCSS 2.x.
 
 ## Infra
 
 * AWS S3
 * AWS Route 53
 
-Infra is defined as code using [CDK](https://docs.aws.amazon.com/cdk/index.html).
+Infra is defined as code using [CDK v2](https://docs.aws.amazon.com/cdk/v2/guide/home.html).
 
 ## CI
 
