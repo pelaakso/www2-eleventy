@@ -3,16 +3,14 @@ module.exports = {
     // removeDeprecatedGapUtilities: true,
     // purgeLayersByDefault: true,
   },
-  purge: [
-    "./.eleventy.js",
+  content: [
     "./src/_includes/**/*.njk",
     "./src/pages/**/*.njk",
-    "./src/index.njk",
+    "./src/*.njk",
   ],
   theme: {
     extend: {},
   },
-  variants: {},
   plugins: [
     require('@tailwindcss/typography'),
   ],
