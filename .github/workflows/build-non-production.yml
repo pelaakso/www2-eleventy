@@ -32,6 +32,9 @@ jobs:
       - name: Lint
         run: npx eslint .
 
+      - name: Code style
+        run: npx prettier --check .
+
       - name: Test infra
         run: npm run test
 
