@@ -14,8 +14,8 @@
     "cdk": "npx cdk"
   },
   "devDependencies": {
-    "@aws-cdk/aws-apigatewayv2-alpha": "^2.20.0-alpha.0",
-    "@aws-cdk/aws-apigatewayv2-integrations-alpha": "^2.20.0-alpha.0",
+    "@aws-cdk/aws-apigatewayv2-alpha": "^2.24.1-alpha.0",
+    "@aws-cdk/aws-apigatewayv2-integrations-alpha": "^2.24.1-alpha.0",
     "@types/aws-lambda": "^8.10.97",
     "@types/jest": "^27.5.0",
     "@types/node": "^16.11.33",
@@ -33,8 +33,8 @@
     "typescript": "^4.6.4"
   },
   "dependencies": {
-    "aws-cdk-lib": "^2.20.0",
-    "constructs": "^10.0.108",
+    "aws-cdk-lib": "^2.24.1",
+    "constructs": "^10.1.7",
     "source-map-support": "^0.5.21"
   }
 }
