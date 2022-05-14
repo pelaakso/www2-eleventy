@@ -9,6 +9,7 @@
     "node": ">=16.0.0 <17",
     "npm": ">=8.0.0"
   },
+
   "scripts": {
     "all": "npm run clean && npx eslint . && npx prettier --check . && npm run test",
     "build": "tsc",
