@@ -4,6 +4,11 @@
   "bin": {
     "infra": "bin/infra.js"
   },
+
+  "engines": {
+    "node": ">=16.0.0 <17",
+    "npm": ">=8.0.0"
+  },
   "scripts": {
     "all": "npm run clean && npx eslint . && npx prettier --check . && npm run test",
     "build": "tsc",
@@ -13,6 +18,7 @@
     "snap": "jest",
     "cdk": "npx cdk"
   },
+
   "devDependencies": {
     "@aws-cdk/aws-apigatewayv2-alpha": "^2.24.1-alpha.0",
     "@aws-cdk/aws-apigatewayv2-integrations-alpha": "^2.24.1-alpha.0",
