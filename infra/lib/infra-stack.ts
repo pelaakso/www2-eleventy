@@ -53,7 +53,7 @@ export class InfraStack extends cdk.Stack {
       architecture: lambda.Architecture.ARM_64,
       entry: 'src/functions/subscribeNewsletter.ts',
       handler: 'lambdaHandler',
-      runtime: lambda.Runtime.NODEJS_14_X,
+      runtime: lambda.Runtime.NODEJS_16_X,
       description: 'Www2Eleventy: handler for subscribe to newsletter',
       functionName: 'Www2EleventySubscribeNewsletter',
       reservedConcurrentExecutions: 10,
