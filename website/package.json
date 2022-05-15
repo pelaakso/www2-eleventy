@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "description": "Static site generation demo using Eleventy",
   "main": "index.js",
+
+  "engines": {
+    "node": ">=14.0.0 <15.0.0",
+    "npm": ">=7.0.0"
+  },
+
   "scripts": {
     "clean": "rimraf _site",
     "serve:postcss": "postcss --verbose src/styles/main.css --output _site/assets/main.css && ./tooling/versionCss.sh _site/assets main css",
@@ -12,6 +18,7 @@
     "build:eleventy": "ELEVENTY_ENV=production eleventy",
     "build": "NODE_ENV=production run-s clean build:*"
   },
+
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -19,6 +26,7 @@
     "type": "git",
     "url": "git+https://github.com/pelaakso/www2-eleventy.git"
   },
+
   "devDependencies": {
     "@11ty/eleventy": "^0.12.1",
     "@11ty/eleventy-navigation": "^0.3.2",
