@@ -4,12 +4,10 @@
   "bin": {
     "infra": "bin/infra.js"
   },
-
   "engines": {
     "node": ">=16.0.0 <17",
     "npm": ">=8.0.0"
   },
-
   "scripts": {
     "all": "npm run clean && npx eslint . && npx prettier --check . && npm run test",
     "build": "tsc",
@@ -19,15 +17,14 @@
     "snap": "jest",
     "cdk": "npx cdk"
   },
-
   "devDependencies": {
     "@aws-cdk/aws-apigatewayv2-alpha": "^2.24.1-alpha.0",
     "@aws-cdk/aws-apigatewayv2-integrations-alpha": "^2.24.1-alpha.0",
     "@types/aws-lambda": "^8.10.97",
     "@types/jest": "^27.5.0",
     "@types/node": "^16.11.33",
-    "@typescript-eslint/eslint-plugin": "^5.23.0",
-    "@typescript-eslint/parser": "^5.23.0",
+    "@typescript-eslint/eslint-plugin": "^5.26.0",
+    "@typescript-eslint/parser": "^5.26.0",
     "aws-cdk": "^2.24.1",
     "esbuild": "^0.14.39",
     "eslint": "^8.16.0",
