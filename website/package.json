@@ -4,8 +4,8 @@
   "description": "Static site generation demo using Eleventy",
   "main": "index.js",
   "engines": {
-    "node": ">=14.0.0 <15.0.0",
-    "npm": ">=7.0.0"
+    "node": ">=16.0.0 <17.0.0",
+    "npm": ">=8.0.0"
   },
   "scripts": {
     "clean": "rimraf _site",
