@@ -4,8 +4,12 @@
   "bin": {
     "infra": "bin/infra.js"
   },
+  "engines": {
+    "node": ">=16.0.0 <17",
+    "npm": ">=8.0.0"
+  },
   "scripts": {
-    "all": "npm run clean && npx eslint . && npm run test",
+    "all": "npm run clean && npx eslint . && npx prettier --check . && npm run test",
     "build": "tsc",
     "clean": "npx rimraf '+(bin|lib|functions|test|utils)/**/+(*.d.ts|*.js)'",
     "watch": "tsc -w",
@@ -14,27 +18,27 @@
     "cdk": "npx cdk"
   },
   "devDependencies": {
-    "@aws-cdk/aws-apigatewayv2-alpha": "^2.12.0-alpha.0",
-    "@aws-cdk/aws-apigatewayv2-integrations-alpha": "^2.12.0-alpha.0",
-    "@types/aws-lambda": "^8.10.92",
-    "@types/jest": "^27.4.0",
-    "@types/node": "^16.11.24",
-    "@typescript-eslint/eslint-plugin": "^5.11.0",
-    "@typescript-eslint/parser": "^5.11.0",
-    "aws-cdk": "^2.12.0",
-    "esbuild": "^0.14.21",
-    "eslint": "^8.9.0",
-    "eslint-config-prettier": "^8.3.0",
+    "@aws-cdk/aws-apigatewayv2-alpha": "^2.25.0-alpha.0",
+    "@aws-cdk/aws-apigatewayv2-integrations-alpha": "^2.25.0-alpha.0",
+    "@types/aws-lambda": "^8.10.97",
+    "@types/jest": "^27.5.1",
+    "@types/node": "^16.11.36",
+    "@typescript-eslint/eslint-plugin": "^5.26.0",
+    "@typescript-eslint/parser": "^5.26.0",
+    "aws-cdk": "^2.25.0",
+    "esbuild": "^0.14.42",
+    "eslint": "^8.16.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "jest": "^27.5.1",
-    "prettier": "^2.5.1",
-    "ts-jest": "^27.1.3",
-    "ts-node": "^10.5.0",
-    "typescript": "^4.5.5"
+    "jest": "^28.1.0",
+    "prettier": "^2.6.2",
+    "ts-jest": "^28.0.3",
+    "ts-node": "^10.8.0",
+    "typescript": "^4.7.2"
   },
   "dependencies": {
-    "aws-cdk-lib": "^2.12.0",
-    "constructs": "^10.0.61",
+    "aws-cdk-lib": "^2.25.0",
+    "constructs": "^10.1.17",
     "source-map-support": "^0.5.21"
   }
 }

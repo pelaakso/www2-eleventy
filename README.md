@@ -8,7 +8,7 @@ A test project creating a site using [Eleventy](https://www.11ty.dev/) static si
 
 ## Tools etc.
 
-* Node 14.18.x or newer 14. This should match the latest version available in AWS Lambda.
+* Node 16.15.x or newer 16. This should match the latest version available in AWS Lambda.
 * TailwindCSS 3.x.
 
 ## Infra

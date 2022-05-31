@@ -1,0 +1,24 @@
+version: 2
+updates:
+  # Enable version updates for infra (npm)
+  - package-ecosystem: "npm"
+    # Where to look for package.json and lock files
+    directory: "/infra"
+    # Check updates every day (weekdays)
+    schedule:
+      interval: "daily"
+      time: "14:00"
+      timezone: "Europe/Helsinki"
+    commit-message:
+      prefix: "Deps/infra: "
+    open-pull-requests-limit: 10
+
+  # Enable version updates for GHA workflows
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    # Check updates every day (weekdays)
+    schedule:
+      interval: "daily"
+      time: "15:00"
+      timezone: "Europe/Helsinki"
+    open-pull-requests-limit: 10
