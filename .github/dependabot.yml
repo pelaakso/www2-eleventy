@@ -13,6 +13,19 @@ updates:
       prefix: "Deps/infra: "
     open-pull-requests-limit: 10
 
+  # Enable version updates for website (npm)
+  - package-ecosystem: "npm"
+    # Where to look for package.json and lock files
+    directory: "/website"
+    # Check updates every day (weekdays)
+    schedule:
+      interval: "daily"
+      time: "15:00"
+      timezone: "Europe/Helsinki"
+    commit-message:
+      prefix: "Deps/website: "
+    open-pull-requests-limit: 10
+
   # Enable version updates for GHA workflows
   - package-ecosystem: "github-actions"
     directory: "/"
