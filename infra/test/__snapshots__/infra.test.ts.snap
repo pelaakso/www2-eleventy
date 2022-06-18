@@ -187,7 +187,7 @@ Object {
         ],
         "Code": Object {
           "S3Bucket": "cdk-hnb659fds-assets-140966923789-eu-central-1",
-          "S3Key": "c2f95286707e81f2e123b4cf5f97f5c2285a8e58d91cc44eaeb7acb03039b836.zip",
+          "S3Key": "3c5e0d34b3ddf6d88ebe5bec2843145bd85541fd3abfa716010a6dda13eb105a.zip",
         },
         "Description": "Www2Eleventy: handler for subscribe to newsletter",
         "Environment": Object {
