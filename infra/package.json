@@ -18,14 +18,14 @@
     "cdk": "npx cdk"
   },
   "devDependencies": {
-    "@aws-cdk/aws-apigatewayv2-alpha": "^2.34.2-alpha.0",
-    "@aws-cdk/aws-apigatewayv2-integrations-alpha": "^2.34.2-alpha.0",
+    "@aws-cdk/aws-apigatewayv2-alpha": "^2.37.1-alpha.0",
+    "@aws-cdk/aws-apigatewayv2-integrations-alpha": "^2.37.1-alpha.0",
     "@types/aws-lambda": "^8.10.102",
     "@types/jest": "^28.1.6",
     "@types/node": "^16.11.48",
     "@typescript-eslint/eslint-plugin": "^5.33.0",
     "@typescript-eslint/parser": "^5.33.0",
-    "aws-cdk": "^2.34.2",
+    "aws-cdk": "^2.37.1",
     "esbuild": "^0.14.53",
     "eslint": "^8.21.0",
     "eslint-config-prettier": "^8.5.0",
@@ -37,8 +37,8 @@
     "typescript": "^4.7.4"
   },
   "dependencies": {
-    "aws-cdk-lib": "^2.34.2",
-    "constructs": "^10.1.64",
+    "aws-cdk-lib": "^2.37.1",
+    "constructs": "^10.1.74",
     "source-map-support": "^0.5.21"
   }
 }
