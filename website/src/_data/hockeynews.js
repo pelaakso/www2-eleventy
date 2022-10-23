@@ -1,4 +1,4 @@
-const axios = require("axios").default;
+const axios = require("axios");
 
 /* The response from endpoint be like:
 
