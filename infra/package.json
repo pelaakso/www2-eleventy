@@ -20,9 +20,9 @@
   "devDependencies": {
     "@aws-cdk/aws-apigatewayv2-alpha": "^2.51.0-alpha.0",
     "@aws-cdk/aws-apigatewayv2-integrations-alpha": "^2.51.0-alpha.0",
-    "@types/aws-lambda": "^8.10.108",
-    "@types/jest": "^29.2.3",
-    "@types/node": "^18.11.9",
+    "@types/aws-lambda": "^8.10.109",
+    "@types/jest": "^29.2.4",
+    "@types/node": "^18.11.11",
     "@typescript-eslint/eslint-plugin": "^5.45.1",
     "@typescript-eslint/parser": "^5.45.1",
     "aws-cdk": "^2.51.0",
