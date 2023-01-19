@@ -21,7 +21,7 @@
     "@aws-cdk/aws-apigatewayv2-alpha": "^2.59.0-alpha.0",
     "@aws-cdk/aws-apigatewayv2-integrations-alpha": "^2.59.0-alpha.0",
     "@types/aws-lambda": "^8.10.109",
-    "@types/jest": "^29.2.5",
+    "@types/jest": "^29.2.6",
     "@types/node": "^18.11.18",
     "@typescript-eslint/eslint-plugin": "^5.48.0",
     "@typescript-eslint/parser": "^5.48.0",
